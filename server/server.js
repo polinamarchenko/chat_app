@@ -24,9 +24,10 @@ io.on('connection', (socket) => {
 
   socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user joined the chat room'));
 
-  socket.on('createMessage', function(message) {
+  socket.on('createMessage', function(message, callback) {
     console.log('created message', message);
     io.emit('newMessage', generateMessage(message.from, message.text))
+    callback('This is from the server');
     // //send message to everybody except of the socket:
     // socket.broadcast.emit('newMessage', {
     //   from: message.from,
