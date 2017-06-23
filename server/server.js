@@ -2,7 +2,7 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
-const {generateMessage} = require('./utils/message');
+const {generateMessage, generateLocationMessage} = require('./utils/message');
 
 var publicPath = path.join(__dirname, '../public')
 
@@ -24,17 +24,15 @@ io.on('connection', (socket) => {
 
   socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user joined the chat room'));
 
-  socket.on('createMessage', function(message, callback) {
+  socket.on('createMessage', (message, callback) => {
     console.log('created message', message);
     io.emit('newMessage', generateMessage(message.from, message.text))
     callback('This is from the server');
-    // //send message to everybody except of the socket:
-    // socket.broadcast.emit('newMessage', {
-    //   from: message.from,
-    //   text: message.text,
-    //   createdAt: new Date().getTime()
-    // });
   });
+
+  socket.on('createLocationMessage', (coords) => {
+    io.emit('newLocationMessage', generateLocationMessage('Admin', coords.latitude, coords.longitude))
+  })
 
   socket.on('disconnect', () => {
     console.log('Client disconnected');
