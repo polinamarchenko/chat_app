@@ -19,6 +19,17 @@ app.use(express.static(publicPath));
 io.on('connection', (socket) => {
   console.log('New user connected');
 
+  socket.emit('newMessage', {
+    from: 'admin',
+    text: 'welcome to chat room',
+    createdAt: new Date().getTime()
+  });
+
+  socket.broadcast.emit('newMessage', {
+    from: 'admin',
+    text: 'New user joined the chat room',
+    createdAt: new Date().getTime()
+  })
 
   socket.on('createMessage', function(message) {
     console.log('created message', message);
@@ -27,6 +38,12 @@ io.on('connection', (socket) => {
       text: message.text,
       createdAt: new Date().getTime()
     })
+    // //send message to everybody except of the socket:
+    // socket.broadcast.emit('newMessage', {
+    //   from: message.from,
+    //   text: message.text,
+    //   createdAt: new Date().getTime()
+    // });
   });
 
   socket.on('disconnect', () => {
