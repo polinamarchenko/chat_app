@@ -172,8 +172,18 @@ button:disabled {
 
 .message__title span {
   color: #999;
+  font-size: 95%;
 }
 
+.message__link {
+  text-decoration: none;
+  color: #339368;
+  font-weight: bold;
+}
+
+.message__link:hover {
+  color: #1d543b;
+}
 
 @media (max-width: 600px) {
   * {
