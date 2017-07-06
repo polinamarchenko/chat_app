@@ -50,7 +50,7 @@ button:disabled {
   background: -webkit-linear-gradient(125deg, #6E3859 0%, #339368 100%); /* safari5.1+,chrome10+ */
   background: -o-linear-gradient(125deg, #6E3859 0%, #339368 100%); /* opera 11.10+ */
   background: -ms-linear-gradient(125deg, #6E3859 0%, #339368 100%); /* ie10+ */
-  background: linear-gradient(325deg, #6E3859 0%, #339368 100%); /* w3c */
+  background: url("confetti.png"), linear-gradient(325deg, #6E3859 0%, #339368 100%) ; /* w3c */
 }
 
 .centered-form__form {
@@ -93,7 +93,7 @@ button:disabled {
   background: -webkit-linear-gradient(125deg, #6E3859 0%, #339368 100%); /* safari5.1+,chrome10+ */
   background: -o-linear-gradient(125deg, #6E3859 0%, #339368 100%); /* opera 11.10+ */
   background: -ms-linear-gradient(125deg, #6E3859 0%, #339368 100%); /* ie10+ */
-  background: linear-gradient(325deg, #6E3859 0%, #339368 100%); /* w3c */
+  background: url("confetti.png"), linear-gradient(325deg, #6E3859 0%, #339368 100%) ; /* w3c */
 }
 
 .chat__sidebar h3 {
